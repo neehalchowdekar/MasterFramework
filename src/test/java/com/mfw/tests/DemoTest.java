@@ -3,8 +3,8 @@ package com.mfw.tests;
 import org.aeonbits.owner.ConfigCache;
 import org.testng.annotations.Test;
 
-import com.mfw.config.ConfigFactory;
 import com.mfw.config.FrameworkConfig;
+import com.mfw.config.factory.ConfigFactory;
 
 public class DemoTest {
 	
