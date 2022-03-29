@@ -1,10 +1,8 @@
 package com.mfw.tests;
 
-import org.aeonbits.owner.ConfigCache;
 import org.testng.annotations.Test;
-
-import com.mfw.config.FrameworkConfig;
 import com.mfw.config.factory.ConfigFactory;
+import com.mfw.driver.Driver;
 
 public class DemoTest {
 	
@@ -12,8 +10,10 @@ public class DemoTest {
 	
 	@Test
 	public void testLogin() {
-		// FrameworkConfig config = ConfigCache.getOrCreate(FrameworkConfig.class);
 		
+		//Driver.initDriverForWeb();
+		Driver.initDriverForMobile();
+		// FrameworkConfig config = ConfigCache.getOrCreate(FrameworkConfig.class);	
 		System.out.println(ConfigFactory.getConfig().browser());
 //		WebDriverManager.chromedriver().setup();
 //		WebDriver driver = new ChromeDriver();
