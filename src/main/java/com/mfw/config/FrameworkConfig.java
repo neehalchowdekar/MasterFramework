@@ -5,12 +5,14 @@ import java.net.URL;
 import org.aeonbits.owner.Config;
 
 import com.mfw.config.converter.StringToBroswerTypeConverter;
+import com.mfw.config.converter.StringToMobileRemoteTypeConverter;
 import com.mfw.config.converter.StringToRemoteModeBroswerTypeConverter;
-import com.mfw.config.converter.StringToRunModeBroswerTypeConverter;
+import com.mfw.config.converter.StringToRunModeTypeConverter;
 import com.mfw.config.converter.StringToURLTypeConverter;
 import com.mfw.enums.BrowserRemoteModeType;
 import com.mfw.enums.BrowserType;
-import com.mfw.enums.RunModeBrowserType;
+import com.mfw.enums.MobileRemoteModeType;
+import com.mfw.enums.RunModeType;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
@@ -25,12 +27,20 @@ public interface FrameworkConfig extends Config{
 	BrowserType browser();
 	
 	@Key("runModeBrowser")
-	@ConverterClass(StringToRunModeBroswerTypeConverter.class)
-	RunModeBrowserType runModeForBrowser();
+	@ConverterClass(StringToRunModeTypeConverter.class)
+	RunModeType browserRunMode();
+	
+	@Key("runMobileMode")
+	@ConverterClass(StringToRunModeTypeConverter.class)
+	RunModeType mobileRunMode();
 	
 	@Key("browserRemoteMode")
 	@ConverterClass(StringToRemoteModeBroswerTypeConverter.class)
 	BrowserRemoteModeType browserRemoteMode();
+	
+	@Key("mobileRemoteMode")
+	@ConverterClass(StringToMobileRemoteTypeConverter.class)
+	MobileRemoteModeType mobileRemoteMode();
 	
 	@ConverterClass(StringToURLTypeConverter.class)
 	URL seleniumGridURL();
@@ -38,4 +48,7 @@ public interface FrameworkConfig extends Config{
 	@ConverterClass(StringToURLTypeConverter.class)
 	URL selenoidGridURL();
 
+	@ConverterClass(StringToURLTypeConverter.class)
+	@DefaultValue("http://127.0.0.1:4723/wd/hub")
+	URL localAppiumServerUrl();
 }

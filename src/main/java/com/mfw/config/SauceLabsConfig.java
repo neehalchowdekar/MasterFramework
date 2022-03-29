@@ -1,24 +1,26 @@
 package com.mfw.config;
 
 import java.net.URL;
-
 import org.aeonbits.owner.Config;
-
+import org.aeonbits.owner.Config.ConverterClass;
+import org.aeonbits.owner.Config.DefaultValue;
+import org.aeonbits.owner.Config.Key;
 import com.mfw.config.converter.StringToURLTypeConverter;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-	"file:${user.dir}/src/test/resources/browser-stack.properties",
+	"file:${user.dir}/src/test/resources/sauce-labs.properties",
 })
-public interface BrowserStackConfig extends Config{
+public interface SauceLabsConfig extends Config {
 	
 	@Key("username")
 	String userName();
 	
 	String key();
 	
-	@DefaultValue("https:// ${username}:${key}@hub-cloud.browserstack.com/wd/hub")
+	@DefaultValue("saucelabsendpoint")
 	@ConverterClass(StringToURLTypeConverter.class)
-	URL browserStackURL();
+	URL sauceLabsUrl();
+	
 
 }
