@@ -14,6 +14,8 @@ public final class LocalMobileDriverFactory {
 	
 	private LocalMobileDriverFactory() {}
 	
+	// Using Supplier here bcoz it gives u lazy evaluations, so u can build the object only it is needed
+	
 	private static final Map<MobilePlatformType, Supplier<WebDriver>> MAP = 
 			new EnumMap<>(MobilePlatformType.class);
 	
