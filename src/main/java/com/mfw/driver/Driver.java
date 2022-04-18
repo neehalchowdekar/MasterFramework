@@ -1,5 +1,7 @@
 package com.mfw.driver;
 
+import java.util.Objects;
+
 import org.openqa.selenium.WebDriver;
 
 import com.mfw.config.factory.ConfigFactory;
@@ -9,15 +11,17 @@ import com.mfw.driver.factory.DriverFactory;
 import com.mfw.enums.MobilePlatformType;
 
 public final class Driver {
-	
-	private Driver() {}
-	
-	//public static WebDriver driver; 
-	// Problem : It is shared between thread, not thread safe 
+
+	private Driver() {
+	}
+
+	// public static WebDriver driver;
+	// Problem : It is shared between thread, not thread safe
 	// driver variable will be read and written
 	// The solution is to use ThreadLocal class
 
 	public static void initDriverForWeb() {
+		if(Objects.isNull(DriverManager.getDriver())){
 		WebDriverData driverData = new WebDriverData(ConfigFactory.getConfig().browser(), ConfigFactory.getConfig().browserRemoteMode());
 //		WebDriverData driverData = WebDriverData.builder()
 //								.browserType(ConfigFactory.getConfig().browser())
@@ -27,10 +31,12 @@ public final class Driver {
 				.getDriverForWeb(ConfigFactory.getConfig().browserRunMode())
 				.getDriver(driverData);
 		DriverManager.setDriver(driver);
+		}
 	}
-	
+
 	public static void initDriverForMobile() {
-		MobileDriverData driverData = new MobileDriverData(MobilePlatformType.ANDROID, ConfigFactory.getConfig().mobileRemoteMode());
+		MobileDriverData driverData = new MobileDriverData(MobilePlatformType.ANDROID,
+				ConfigFactory.getConfig().mobileRemoteMode());
 //		MobileDriverData driverData = MobileDriverData.builder()
 //								.mobilePlatformType(MobilePlatformType.ANDROID)
 //								.mobileRemoteModeType(ConfigFactory.getConfig().mobileRemoteMode())
@@ -39,11 +45,14 @@ public final class Driver {
 				.getDriverForMobile(ConfigFactory.getConfig().mobileRunMode())
 				.getDriver(driverData);
 		DriverManager.setDriver(driver);
-		
+
 	}
-	
+
 	public static void quitDriver() {
+		if(Objects.nonNull(DriverManager.getDriver())) {
 		DriverManager.getDriver().quit();
+		DriverManager.unload();
+		}
 	}
 
 }
