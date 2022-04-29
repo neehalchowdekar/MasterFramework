@@ -3,7 +3,6 @@ package com.mfw.config;
 import java.net.URL;
 
 import org.aeonbits.owner.Config;
-
 import com.mfw.config.converter.StringToBroswerTypeConverter;
 import com.mfw.config.converter.StringToMobileRemoteTypeConverter;
 import com.mfw.config.converter.StringToRemoteModeBroswerTypeConverter;
@@ -19,8 +18,16 @@ import com.mfw.enums.RunModeType;
 	"system:properties",
 	"system:env",
 	"file:${user.dir}/src/test/resources/config.properties",
+	"file:${user.dir}/src/test/resources/staging-config.properties",
+	"file:${user.dir}/src/test/resources/dev-config.properties",
 })
 public interface FrameworkConfig extends Config{
+	
+	@DefaultValue("staging")
+	String environment();
+	
+	@Key("${environment}.webUrl")
+	String webUrl();
 	
 	@DefaultValue("CHROME")
 	@ConverterClass(StringToBroswerTypeConverter.class)

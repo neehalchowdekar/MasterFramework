@@ -1,7 +1,6 @@
 package com.mfw.driver;
 
 import org.openqa.selenium.WebDriver;
-
 import static com.mfw.enums.PlatformType.*;
 import com.mfw.enums.PlatformType;
 import io.appium.java_client.android.AndroidDriver;

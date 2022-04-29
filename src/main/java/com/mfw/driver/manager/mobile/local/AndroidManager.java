@@ -5,9 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import com.mfw.config.factory.ConfigFactory;
-
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public final class AndroidManager {

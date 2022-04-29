@@ -11,10 +11,10 @@ public class DemoTest {
 	@Test
 	public void testLogin() {
 		
-		//Driver.initDriverForWeb();
-		Driver.initDriverForMobile();
+		Driver.initDriverForWeb();
+		//Driver.initDriverForMobile();
 		// FrameworkConfig config = ConfigCache.getOrCreate(FrameworkConfig.class);	
-		System.out.println(ConfigFactory.getConfig().browser());
+		//System.out.println(ConfigFactory.getConfig().browser());
 //		WebDriverManager.chromedriver().setup();
 //		WebDriver driver = new ChromeDriver();
 //		driver.get("https://google.co.in");

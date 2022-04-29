@@ -1,9 +1,7 @@
 package com.mfw.driver;
 
 import java.util.Objects;
-
 import org.openqa.selenium.WebDriver;
-
 import com.mfw.config.factory.ConfigFactory;
 import com.mfw.driver.entity.MobileDriverData;
 import com.mfw.driver.entity.WebDriverData;
@@ -31,7 +29,12 @@ public final class Driver {
 				.getDriverForWeb(ConfigFactory.getConfig().browserRunMode())
 				.getDriver(driverData);
 		DriverManager.setDriver(driver);
+		loadUrl();
 		}
+	}
+	
+	public static void loadUrl() {
+		DriverManager.getDriver().get(ConfigFactory.getConfig().webUrl());
 	}
 
 	public static void initDriverForMobile() {
