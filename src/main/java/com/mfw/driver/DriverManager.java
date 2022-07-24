@@ -19,8 +19,7 @@ public final class DriverManager {
 	// 1. Web, 2. Mobile
 	// To store both these need a data structure
 	// LIST --> we have to get it on the bases of indexes.
-	// MAP --> K,V pair (WEB, WEB_DRIVER_THREAD_LOCAL), (MOBILE,
-	// MOBILE_DRIVER_THREAD_LOCAL)
+	// MAP --> K,V pair (WEB, WEB_DRIVER_THREAD_LOCAL), (MOBILE, MOBILE_DRIVER_THREAD_LOCAL)
 	// At particular instance, context --> WEB, MOBILE
 
 	private DriverManager() {
@@ -53,6 +52,11 @@ public final class DriverManager {
 		return driver instanceof AndroidDriver || driver instanceof IOSDriver;
 	}
 
+	
+	/**
+	 * using unload bcoz it can cause memory leaks, so instead of setting back to null which will make sure
+	 * all the value are removed
+	 */
 	public static void unload() {
 		WEB_DRIVER_THREAD_LOCAL.remove();
 		MOBILE_DRIVER_THREAD_LOCAL.remove();

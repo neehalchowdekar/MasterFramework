@@ -15,11 +15,13 @@ public final class DriverFactory {
 
 	private DriverFactory() {}
 	
-	// Using Supplier Interface here bcoz it gives u lazy evaluations, so u can build the object only it is needed
+	//
 	
-	
-	// Mainly the DriverFactory have to only return the implementation, basically now the getDriver method will 
-	// fetch data with respect to RunModeType i.e Local or remote
+	/*
+	 * 1. Using Supplier Interface here bcoz it gives u lazy evaluations, so u can build the object only it is needed.
+	 * 2. Mainly the DriverFactory have to only return the implementation, basically now the getDriver method will 
+	 * 		fetch data with respect to RunModeType i.e Local or remote
+	 */
 	
 	private static final Map<RunModeType, Supplier<IWebDriver>> WEB = new EnumMap<>(RunModeType.class);
 	private static final Map<RunModeType, Supplier<IMobileDriver>> MOBILE = new EnumMap<>(RunModeType.class);

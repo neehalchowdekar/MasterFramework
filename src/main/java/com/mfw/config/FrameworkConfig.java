@@ -13,6 +13,10 @@ import com.mfw.enums.BrowserType;
 import com.mfw.enums.MobileRemoteModeType;
 import com.mfw.enums.RunModeType;
 
+/**
+ * @author Neehal(neehal@lenskart.in)
+ * 
+ */
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
 	"system:properties",
@@ -20,6 +24,7 @@ import com.mfw.enums.RunModeType;
 	"file:${user.dir}/src/test/resources/config.properties",
 	"file:${user.dir}/src/test/resources/staging-config.properties",
 	"file:${user.dir}/src/test/resources/dev-config.properties",
+	"file:${user.dir}/src/test/resources/preprod.properties"
 })
 public interface FrameworkConfig extends Config{
 	
@@ -28,6 +33,9 @@ public interface FrameworkConfig extends Config{
 	
 	@Key("${environment}.webUrl")
 	String webUrl();
+	
+	@DefaultValue("false")
+	boolean headless();
 	
 	@DefaultValue("CHROME")
 	@ConverterClass(StringToBroswerTypeConverter.class)

@@ -10,6 +10,7 @@ import com.mfw.driver.manager.web.local.ChromeDriverManager;
 import com.mfw.driver.manager.web.local.FirefoxDriverManager;
 import com.mfw.enums.BrowserType;
 
+// Using final class here so that no one can extend this class
 public final class LocalDriverFactory {
 
 	private LocalDriverFactory() {

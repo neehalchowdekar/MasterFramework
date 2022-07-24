@@ -10,10 +10,9 @@ import com.mfw.enums.MobilePlatformType;
 
 public final class Driver {
 
-	private Driver() {
-	}
+	private Driver() {}
 
-	// public static WebDriver driver;
+	// public static WebDriver driver; // shared between threads
 	// Problem : It is shared between thread, not thread safe
 	// driver variable will be read and written
 	// The solution is to use ThreadLocal class
