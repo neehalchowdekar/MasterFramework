@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 import com.mfw.pages.LoginPage;
 import com.mfw.pages.enums.adduser.AddUserScenarioType;
+import com.mfw.pages.enums.loginuser.LoginUserScenarioType;
+
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import io.github.sskorol.core.DataSupplier;
 
@@ -43,6 +45,10 @@ public class AddUsersTest extends WebBase {
 	.withFailMessage(() -> addUserScenarioType.getUserData().getMessage())
 	.isTrue();
 	}
+	
+	
+	
+	
 	
 //	@DataProvider
 //	public Object[][] getData(){

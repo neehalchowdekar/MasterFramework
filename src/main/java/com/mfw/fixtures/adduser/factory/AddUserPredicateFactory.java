@@ -13,12 +13,15 @@ public class AddUserPredicateFactory {
 	private static final Map<String, Supplier<BiPredicate<UserData, AddUserComponent>>> MAP = new HashMap<>();
 	
 	
-	private static final BiPredicate<UserData, AddUserComponent> JUST_EMPLOYEE_NAME_PREDICATE = (userData, addComponent) -> {
-		addComponent.setEmployeeTextBox(userData.getEmployeeName());
+	private static final BiPredicate<UserData, AddUserComponent> JUST_EMPLOYEE_NAME_PREDICATE = 
+		(userData, addComponent) -> {
+		addComponent
+		.setEmployeeTextBox(userData.getEmployeeName());
 		return addComponent.isErrorMessageDisplayed();
 		};
 		
-	private static final BiPredicate<UserData, AddUserComponent> VALID_PREDICATE = (userData, addComponent) -> {
+	private static final BiPredicate<UserData, AddUserComponent> VALID_PREDICATE = 
+		(userData, addComponent) -> {
 		addComponent
 		.setUserRoleDropDown(userData.getUserRole())
 		.setEmployeeTextBox(userData.getEmployeeName())

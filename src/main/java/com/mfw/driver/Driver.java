@@ -1,6 +1,8 @@
 package com.mfw.driver;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import com.mfw.config.factory.ConfigFactory;
 import com.mfw.driver.entity.MobileDriverData;
@@ -28,8 +30,13 @@ public final class Driver {
 				.getDriverForWeb(ConfigFactory.getConfig().browserRunMode())
 				.getDriver(driverData);
 		DriverManager.setDriver(driver);
+		implicitWait(3);
 		loadUrl();
 		}
+	}
+	
+	public static void implicitWait(int wait) {
+		DriverManager.getDriver().manage().timeouts().implicitlyWait(wait, TimeUnit.SECONDS);
 	}
 	
 	public static void loadUrl() {

@@ -11,6 +11,7 @@ public class TopMenuComponent {
 	
 	private static final String MENU = "//b[text()='%s']/parent::a";
 	private static final String SUB_MENU = "//a[text()='%s']";
+	private static final By WELCOME_TEXT = By.id("welcome");
 	
 	
 	public TopMenuComponent clickOnMenuItems(MenuType menuType) {
@@ -23,6 +24,10 @@ public class TopMenuComponent {
 		String xpath = String.format(SUB_MENU, subMenuType.getName());
 		PageActionsHelper.waitAndClick(By.xpath(xpath));
 		return this;
+	}
+	
+	public boolean isWelcomeTextDisplayed() {
+		return PageActionsHelper.isPresent(WELCOME_TEXT, e -> e.isDisplayed());
 	}
 }
 
